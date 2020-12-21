@@ -1,0 +1,11 @@
+.inner_container{
+    background-repeat: no-repeat;
+    height: fit-content;
+    border: 1px solid #ffffff;
+    background-color: #0f1321;
+    margin-right: 30px;
+    height: 100%;
+    color: #ffffff;
+    border-top: 10px solid #5cb85c;
+
+}

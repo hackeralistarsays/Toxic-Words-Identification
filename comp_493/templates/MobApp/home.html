@@ -1,0 +1,659 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>www.egertona..</title>
+    <link rel="stylesheet" href="{% static 'sevens/assets/css/base/main.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'sevens/assets/css/base/animsta/animsta.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'sevens/custom-confirm.css' %}">
+    <link rel="stylesheet" href="{% static 'sevens/custom-confirm.css' %}" />
+    <link rel="stylesheet" href="{% static 'sevens/assets/css/css/panel.css' %}">
+
+            <!-- Bootstrap core CSS -->
+            <link href="{% static 'sevens/assets/css/bootstrap/bootstrap.css' %}" rel="stylesheet">
+      
+            <!-- Jasny Bootstrap CSS -->
+            <link href="{% static 'sevens/assets/css/jasny-bootstrap/jasny-bootstrap.css' %}" rel="stylesheet">
+        
+            <!-- Bootstrap Form Helpers CSS -->
+            <link href="{% static 'sevens/assets/css/bootstrap-form-helpers/bootstrap-formhelpers.css' %}" rel="stylesheet">  
+        
+            <!-- Animate CSS -->
+            <link href="{% static 'sevens/assets/css/animate/animate.css' %}" rel="stylesheet">
+        
+            <!-- Font Awesome CSS -->
+            <link rel="stylesheet" href="{% static 'sevens/assets/css/font-awesome/font-awesome.css' %}">
+        
+            <!-- PACE CSS -->
+            <link rel="stylesheet" href="{% static 'sevens/assets/css/pace/pace.css' %}">
+        
+            <!-- Custom styles for this template -->
+            <link href="{% static 'sevens/assets/css/base/main.css' %}" rel="stylesheet">
+
+    <!--Side navigation bar-->   
+<style>
+body {
+    font-family: "Lato", sans-serif;
+    height: 100%;
+}
+    body{
+        background-image:url({% static 'sevens/userfiles/background-images/image.jpg' %});
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 9%;
+    left: 0;
+    background-color: transparent;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 20px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: green;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 15px;
+    color: red;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+footer {
+  background:rgba(0,0,0,.8);
+  bottom: 0px;
+  height: 250px;
+  position: relative;
+  margin-bottom: 0;
+  width: 100%
+
+}
+
+
+.home{
+  background-image:url({% static 'sevens/userfiles/background-images/image.jpg' %});
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  background-repeat: none;
+  background-opacity:0.8px;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.car{
+  position: relative;
+  border: 1px solid #e5e5e5;
+  margin: 1%;
+  padding: 10px;
+  overflow: hidden;
+  width: 200px;
+  border-radius: 10px;
+  margin-top: 25px;
+  display: inline-block;
+}
+.car img{
+  max-width: 100% -moz-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.car:hover img{
+  -moz-transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+}
+
+
+
+.focus-in-contract-bck {
+  -webkit-animation: focus-in-contract-bck 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+          animation: focus-in-contract-bck 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes focus-in-contract-bck {
+  0% {
+    letter-spacing: 1em;
+    -webkit-transform: translateZ(300px);
+            transform: translateZ(300px);
+    -webkit-filter: blur(12px);
+            filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(12px);
+            transform: translateZ(12px);
+    -webkit-filter: blur(0);
+            filter: blur(0);
+    opacity: 1;
+  }
+}
+
+.update{
+  background-color: white;
+  width: 100%;
+  height: 150vh;
+  background-repeat: none;
+  border-radius: 25px;
+}
+.about{
+  background-color: transparent;
+  width: 100%;
+  height: 100vh;
+  background-repeat: none;
+  display: flex;
+  justify-content: center;
+
+}
+
+.about i {
+  padding-top: 80px;
+}
+
+.about a:hover {
+  color: white;
+}
+
+.about h2{
+  color: green;
+  font-size: 2rem;
+  align-items: center;
+  font-weight: 900px;
+}
+
+.about p {
+  color: white;
+}
+
+.portfolio{
+  background-color: #f1f1f1;
+  width: 100%;
+  height: 90vh;
+  background-repeat: none;
+  left: 0px;
+  border-radius: 25px;
+  margin:0;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: left;
+  justify-content: center;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+<!--/side navigation bar-->
+    </head>
+    <body>
+
+      <?php
+      $current_user = $_SESSION['user_username'];
+      $sql = "SELECT * FROM user WHERE user_username='$current_user'";
+      $result = mysqli_query($database,$sql);
+      while($row = mysqli_fetch_array($result,MYSQLI_BOTH)) {
+  ?>
+      <!-- Navbar1 -->
+        <div id="navigation" class="navbar navbar-default navbar-fixed-top">
+          <div class="fluid-container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse1">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>     
+              </div>
+            <div class="navbar-collapse collapse" id="navbar-collapse1">
+               <form class="navbar-form navbar-left" role="search" method="post" autocomplete="off" action="search-result.php">
+                      <div class="form-group">
+                          <input type="text" class="search form-control" id="searchbox" placeholder="Search for People" name="search-form"/><br />
+                          <div id="display"></div>
+              </div> 
+          </form>
+                  <ul class="nav navbar-nav navbar-right">
+                      <li class="dropdown">
+                          <a href="#" style="color:red" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $row['user_firstname'];?> <?php echo $row['user_lastname'];?><strong class="caret"></strong></a>                  
+                          <ul class="dropdown-menu">
+                              <li>
+                                  <a href="edit-profile.php"><i class="fa fa-edit"></i> Edit Profile</a>
+                              </li>
+                          </ul>
+                      </li>	
+                      <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                              <i class="fa fa-bars" style="font-size: 1.27em;"></i>
+                          </a>
+                          <ul class="dropdown-menu">
+                              <li>
+                                  <a href="components/logout.php"><i class="fa fa-mail-reply"></i> Logout</a>
+                              </li>
+                          </ul>
+                      </li>	
+                  </ul>    
+            </div><!--/.nav-collapse -->
+          </div>
+        </div>
+        <!-- ./Navbar1 -->
+  <?php
+      }
+  ?>
+
+
+
+
+
+
+        
+    <script>
+        $.growl("<?php echo $dialogue; ?> ", {
+            animate: {
+                enter: 'animated zoomInDown',
+                exit: 'animated zoomOutUp'
+            }								
+        });
+    </script>
+        
+  <div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="home.php" style="color:green"><i class="fa fa-home"></i> Home</a>
+  <a href="controllers/form/notification-table.php"><i class="fa fa-bell"></i> Notifications</a>
+  <a href="edit-profile.php"><i class="fa fa-user"></i> Edit Profile</a>
+  <a href="permit.php"><i class="fa fa-envelope"></i> Permits</a>
+  <a href="all-users.php"><i class="fa fa-eye"></i> View all users</a>
+  <a href="components/logout.php" style=""><i class="fa fa-laptop" ></i> Logout</a>
+</div>
+       
+
+<div id="main">
+  <span style="font-size:30px;cursor:pointer;color: purple" onclick="openNav()">&#9776; MENU</span>
+
+    <div class="home">
+      <div>
+        <div class="vibrate-1">
+            <h1 class="text-center" style="color:green;">Hello <?php echo $_SESSION['user_username']; ?>!</h1>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                                <div class="carousel-content">
+                                    <h2 class="focus-in-contract-bck">Welcome To <span>The Company</span></h2>
+                                    <p>The most proffessionally worked out designs with quality service provision. We offer more...</p>
+                                    <a class="btn-slide animation animated-item-3" href="about.html">Read More</a>                                       
+                                </div>
+                            </div>
+        </div>
+      
+               
+                           
+                <div class="col-sm-4">
+                   <img src="{% static 'sevens/userfiles/slider/logo.png' %}" width="200%" height="160%">
+                </div>
+
+    </div>
+        
+<div class="update"  style="background-image: url("{% static 'sevens/userfiles/background-images/front-imag.jpg' %}"); " style="background-image: opacity:0.1;" >
+    <div class="row clearfix" >
+        
+        
+        
+        
+        
+<!--Meetng panel -->             
+                        
+    <div class="row">
+      <h1 class="focus-in-contract-bck text-center">NOTICE AND CHAT SECTION</h1>
+                <div class="col-md-6 col-sm-4">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                           <h2 style="color:red;align-content: center;"> <i class="fa fa-warning" style="color:red;font-size:25px;"></i> IMPORTANT NOTICES</h2>
+                        </div>
+                        <div class="panel-body">
+                            <?php
+$sql = "SELECT type,detail,PageName from tblpages where type='updates'";
+$query = $dbh -> prepare($sql);
+$query->execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+$cnt=1;
+if($query->rowCount() > 0)
+{
+foreach($results as $result)
+{ ?>
+
+  <!-- Dark Overlay-->
+<section class="about_us section-padding">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2><?php  echo $result->PageName; ?> </h2>
+      <p><?php  echo $result->detail; ?> </p>
+    </div>
+   <?php } }?>
+  </div>
+</section>
+<?php
+$sql = "SELECT type,detail,PageName from tblpages where type='event'";
+$query = $dbh -> prepare($sql);
+$query->execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+$cnt=1;
+if($query->rowCount() > 0)
+{
+foreach($results as $result)
+{ ?>
+
+  <!-- Dark Overlay-->
+<section class="about_us section-padding">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2><?php  echo $result->PageName; ?> </h2>
+      <p><?php  echo $result->detail; ?> </p>
+    </div>
+   <?php } }?>
+  </div>
+</section>
+
+<?php
+$sql = "SELECT type,detail,PageName from tblpages where type='agroforestry'";
+$query = $dbh -> prepare($sql);
+$query->execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+$cnt=1;
+if($query->rowCount() > 0)
+{
+foreach($results as $result)
+{ ?>
+
+  <!-- Dark Overlay-->
+<section class="about_us section-padding">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2><?php  echo $result->PageName; ?> </h2>
+      <p><?php  echo $result->detail; ?> </p>
+    </div>
+   <?php } }?>
+  </div>
+</section>
+
+<?php
+$sql = "SELECT type,detail,PageName from tblpages where type='privacy'";
+$query = $dbh -> prepare($sql);
+$query->execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+$cnt=1;
+if($query->rowCount() > 0)
+{
+foreach($results as $result)
+{ ?>
+
+  <!-- Dark Overlay-->
+<section class="about_us section-padding">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2><?php  echo $result->PageName; ?> </h2>
+      <p><?php  echo $result->detail; ?> </p>
+    </div>
+   <?php } }?>
+  </div>
+</section>
+                            
+                        </div>
+                        <div class="panel-footer" style="background-color:gray">
+                            <a href="controllers/form/notification-table.php">View Details <i class="fa fa-arrow-right"></i></a>
+                        </div>
+                        </div>
+                        
+                </div>
+        <!--Chat Panel StarTs Here-->
+                <div class="col-md-6 col-sm-12">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                           <i class="fa fa-comments" style="font-size:35px;"></i> Chats Panel
+                        </div>
+                        <div class="panel-body">
+                                                <?php
+$tid=1;
+$sql = "SELECT tbltestimonial.Testimonial,user.FullName,tbltestimonial.PostingDate from tbltestimonial join user on tbltestimonial.UserEmail=user.EmailId where tbltestimonial.status=:tid";
+$query = $dbh -> prepare($sql);
+$query->bindParam(':tid',$tid, PDO::PARAM_STR);
+$query->execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+$cnt=1;
+if($query->rowCount() > 0)
+{
+foreach($results as $result)
+{  ?>
+
+
+        
+              <h5><i class="fa fa-user"> <?php echo htmlentities($result->FullName);?></i><small class="pull-right text-muted" style="color: green">
+            <i class="fa fa-clock-o fa-fw"></i><?php echo htmlentities($result->PostingDate); ?></small></h5>
+            <p><?php echo htmlentities($result->Testimonial);?></p>
+    
+        
+            <p>
+               <a href="post-message.php" id="reply"><i class="fa fa-comment" style="color:blue"></i> Reply </a>
+               <a href="#" id="comment"><i class="fa fa-eye" style="color:blue"></i> View Replies</a></p>
+               <br>             
+          
+        <?php }} ?>   
+      
+                        </div>
+                        <div class="panel-footer" style="color:gray">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <p style="font-size:18px;color:green"><a href="post-message.php"><i class="fa fa-edit"></i> 
+                                        Compose A New Message
+                                    </a></p>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+                        
+                        
+                </div>  
+    
+          </div>
+
+
+
+
+
+          <!--About Section-->
+          <div class="about">
+            <div class="zoom">
+            <div class="col-sm-3">
+            <a href=""><i class="fa fa-book" style="font-size: 85px;color: green"></i></a>
+            <h2>Fully Responsive</h2>
+            <p>We engage in designing responsive websites that are of quality.This is made through quality service delivery from our qualified personells</p>
+            </div>
+
+            <div class="col-sm-3">
+            <i class="fa fa-laptop" style="font-size: 85px;color: green"></i>
+            <h2>Destop Developed Websites</h2>
+            <p>Website developement is one our our major speciality.Currently we are doing desktop compactible wesites.One of the most attractive desktop websites.Our specialization doent cover mobile compactible websites.Thats our next project but for the time being enjoy our desktop designs</p>
+            </div>
+
+            <div class="col-sm-3">
+            <i class="fa fa-heart-o" style="font-size: 85px;color: green"></i>
+            <h2>Creative Design</h2>
+            <p>I've got to say creativity is the driving factor behind our site developement. This basicly involes explorations and conceptualizations. Tastes come with a price expecially if the taste is so much expensive. I concider taste and put in to practive a satisfaction.</p>
+            </div>
+
+            <div class="col-sm-3">
+            <i class="fa fa-cloud" style="font-size: 85px;color: green"></i>
+            <h2>Friendly Code</h2>
+            <p>No need to worry about the codes complexity. The developments are interms of prototype. Step by step design. This enhances debburging and understanding.</p>
+</div>
+            </div>
+
+          </div>
+          <!--/About Section-->
+          <h1 style="text-align: center;">PHOTO GALLERY</h1>
+<!--Portfolio Section-->
+        <div class="portfolio">
+          
+         
+            <div class="car">
+  <img src="userfiles/slider/img1.jpg" width="185px" height="275px">
+   <div class="car-overlay top"></div>
+</div>
+
+
+  <div class="car">
+  <img src="userfiles/slider/img2.jpg" width="185px" height="275px">
+  <div class="car-overlay top"></div>
+
+</div>
+
+  <div class="car">
+  <img src="userfiles/slider/img0.jpg" width="185px" height="275px">
+  <div class="car-overlay top"></div>
+</div>
+
+
+
+  <div class="car">
+  <img src="userfiles/slider/img.jpg" width="185px" height="275px">
+  <div class="car-overlay top"></div>
+
+</div>
+</div>
+        </div>
+<!--/Portfolio Section-->
+
+    </div>
+</div>
+     
+        <footer>
+            <div class="col-sm-4 pull-right">
+          <p class="float-center" style="color:purple;position:">Copyright &copy; 2018 Project | By Brentone Alistar
+    </div>
+    <div class="col-sm-4">
+            <h2>Follow Me:</h2>
+           <p><a href="" style="color: blue"><i class="fa fa-facebook"></i> Facebook </a></p>
+           <p> <a href="" style="color: red"><i class="fa fa-youtube"></i> Youtube </a></p>  
+            <p><a href="" style="color: blue"><i class="fa fa-twitter"></i> Twitter </a> </p>
+            <p><a href="" style="color: purple"><i class="fa fa-instagram"></i> Instagram </a> </p>
+            <a href="" style="color: red"><i class="fa fa-google"></i> Google+ </a> 
+
+          </div>
+<div class="col-sm-4">
+  <form method="post" autocomplete="off">
+        <label>EMAIL ADDRESS</label>
+        <input class="form-control" type="email" name="subscribe" placeholder="Enter Email Address" required><br>
+        <button class="btn btn-primary" name="submit">** Subscribe ** <i class="fa fa-angle-right"></i></button>
+        
+    </div>
+</form>
+</div>
+          </p>
+        
+        
+        </footer>
+        
+        
+        
+        
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+}
+</script>
+        
+        
+ <script src="custom-confirm.js"></script>
+    <script>
+        CustomConfirm('a', function (confirmed, element) {
+            if (confirmed) {
+                // do what you want (play with target element, ajax...)
+                location.href = element.href;
+            } else {
+                // do something or... nothing, if you want to
+            }
+        });
+
+        CustomConfirm('button', function (confirmed, element) {
+            // play with the target element or anything else
+            if (confirmed) {
+                element.parentNode.remove();
+            } else {
+                var p = document.createElement('p');
+                p.innerHTML = 'A Wise decision has been made for LI <strong>' + element.previousSibling.textContent + '</strong>';
+                element.parentNode.parentNode.appendChild(p);
+            }
+        });
+            </script>
+     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="{% static 'sevens/assets/js/jquery-1.10.2.js' %}"></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+    <script src="{% static 'sevens/assets/js/bootstrap.min.js' %}"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="{% static 'sevens/assets/js/jquery.metisMenu.js' %}"></script>
+      <!-- CUSTOM SCRIPTS -->
+    <script src="{% static 'sevens/assets/js/custom.js' %}"></script>
+
+     <!-- Base JavaScript -->
+     <script src="{% static 'sevens/assets/js/base/jquery.min.js' %}"></script>
+     <script src="{% static 'sevens/assets/js/base/smoothscroll.js' %}"></script>
+     <script src="{% static 'sevens/assets/js/base/jquery.form.js' %}"></script>
+     
+     <!-- Bootstrap core JavaScript
+     ================================================== -->
+     <!-- Placed at the end of the document so the pages load faster -->
+     <script src="{% static 'sevens/assets/js/bootstrap/bootstrap.js' %}"></script>
+ 
+     <!-- JQuery UI Tabs JavaScript -->
+     <script src="{% static 'sevens/assets/js/base/jquery-ui.js' %}"></script>
+     
+     <!-- Bootstrap Form Helpers -->
+     <link href="{% static 'sevens/assets/js/bootstrap-form-helpers/bootstrap-formhelpers.js' %}"></script>
+     <link href="{% static 'sevens/assets/js/bootstrap-form-helpers/bootstrap-formhelpers-colorpicker.js' %}"></script>    
+     <link href="{% static 'sevens/assets/js/bootstrap-form-helpers/bootstrap-formhelpers-datepicker.js' %}"></script>
+ 
+     <!-- Base JavaScript -->
+     <script src="{% static 'sevens/assets/js/base/offcanvas.js' %}"></script>
+     <script src="{% static 'sevens/assets/js/base/scripts.js' %}"></script>
+ 
+     <!-- PACE JavaScript -->
+     <script src="{% static 'sevens/assets/js/pace/pace.min.js' %}"></script>
+ 
+     <!-- InstaClick JavaScript -->
+     <script src="{% static 'sevens/assets/js/instantclick/instantclick.min.js' %}" data-no-instant></script>
+   
+        
+        </body>
+    </html>
